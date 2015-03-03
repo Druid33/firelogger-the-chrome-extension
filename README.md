@@ -58,6 +58,7 @@ Screenshots
 
 Issues
 ------
+If you find some bug, please report it [here](https://github.com/Druid33/firelogger-the-chrome-extension/issues).
 
 Author
 ------
