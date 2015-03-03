@@ -31,9 +31,7 @@ From github:
 
 From chrome web store:
 
-1. open chrome web store
-2. search for FireLogger
-3. click "add to chrome" button
+In progress...
 
 
 How to use
