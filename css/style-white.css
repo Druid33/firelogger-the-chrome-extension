@@ -1,0 +1,66 @@
+@charset "utf-8";
+
+/* DEFINE ONLY COLORS HERE*/
+
+body{
+    background-color: white;
+}
+
+.log {
+    color: black;
+}
+
+.toolbar {
+    background-color: black;
+    color: white;
+}
+
+.response-msg {
+    border-bottom-color: gray;
+}
+
+.response-msg:hover{
+    background-color: #BDBDBD;
+}
+
+.response-url {
+    color: white;
+    background-color: gray;
+    border-bottom-color:gray;
+}
+
+.filter-bar img {
+    border-color:black;
+}
+
+.filter-bar img:hover {
+    border-color:blue;
+}
+
+.font-resizer img {
+    border-color:black;
+}
+.font-resizer img:hover {
+    border-color:blue;
+}
+
+
+.themeSelectorLabel {
+    color: white;
+}
+/*highlighter for json*/
+.string { color: green; }
+.number { color: darkorange; }
+.boolean { color: blue; }
+.null { color: magenta; }
+.key { color: red; }
+
+/*highlighter for sql*/
+.sql-special-char {color: brown;}
+.sql-keyword {color: blue;}
+.sql-string {color: darkgreen;}
+.sql-comment {color: gray;}
+.sql-function {color: red;}
+.sql-bind-param {color: orange;}
+
+

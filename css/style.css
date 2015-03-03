@@ -1,0 +1,192 @@
+@charset "utf-8";
+
+/*DONT USE COLORS HERE. THERE ARE DEFINED IN SEPARETED FILES*/
+
+.log {
+    margin-top: 32px;
+    vertical-align: middle;
+    font-family: courier, sans-serif, monospace;
+    /*font-size:18px;*/
+}
+
+/* Tool bar styles */
+.toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    font-family: Arial, courier, sans-serif, monospace;
+    color: white;
+    background-color: black;
+}
+
+.clear-button {
+    display: inline-block;
+    margin-top: 8px;
+    /*margin-right: 10px;*/
+    vertical-align: top;
+}
+
+
+.theme-selector {
+    display: inline-block;
+    vertical-align: top;
+    margin-top:3px;
+}
+.theme-selector label {
+    font-size: 13px;
+    font-weight: bold;
+}
+.space {
+    display:inline-block;
+    width: 25px;
+}
+
+.on-off-btn {
+    display: inline-block;
+    vertical-align: top;
+    float: right;
+    margin-top:6px;
+    margin-right:10px;
+}
+.on-off-btn {
+  background: #f7310f;
+  border-radius: 28px;
+  color: #ffffff;
+  font-size: 14px;
+  width: 70px;
+  text-align:center;
+  padding: 2px 0px 2px 0px;
+  text-decoration: none;
+}
+
+.on-off-btn:hover {
+  background: #3cb0fd;
+  text-decoration: none;
+}
+
+/*.text-filter {
+    display: inline-block;
+    vertical-align: top;
+    margin-top:3px;
+}
+.text-filter label {
+    font-weight: bold;
+}*/
+
+.global-msg {
+    position: fixed;
+    top: 30;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 4px;
+    display: none;
+    background-color: red;
+    font-weight:bold;
+}
+
+.filter-bar {
+    padding: 0px;
+    display: inline-block;
+    margin-top: 2px;
+}
+.filter-bar img {
+    display      : block;
+    float: left;
+    margin       : 2px;
+    border-style : solid;
+    border-width : 3px;
+    border-radius: 2px;
+}
+
+
+.font-resizer {
+    /*background-color:red;*/
+    padding: 0px;
+    display: inline-block;
+    margin-top: 2px;
+}
+.font-resizer img {
+    display      : block;
+    float: left;
+    margin       : 2px;
+    border-style : solid;
+    border-width : 3px;
+    border-radius: 2px;
+}
+
+/* firelogger messages styles*/
+.response-msgs{
+
+}
+
+.response-msg {
+    margin-top:1px !important;
+    margin-bottom:1px !important;
+    border-bottom-style : solid;
+    border-bottom-width : 1px;
+    padding-left: 20px;
+    margin-left: 20px;
+    background-repeat: no-repeat;
+    white-space:pre-wrap;
+    /*font-family: monospace;*/
+
+}
+
+
+
+.debug {
+    background-image: url("../ico/debug.png");
+}
+
+.info {
+    background-image: url("../ico/info.png");
+}
+
+.warning {
+    background-image: url("../ico/warning.png");
+}
+
+.error {
+    background-image: url("../ico/error.png");
+}
+
+.critical {
+    background-image: url("../ico/critical.png");
+}
+
+.response-div {
+    margin-bottom: 2px;
+}
+.response-url {
+    font-weight         : bold;
+    border-bottom-width : 2px;
+    border-bottom-style : solid;
+}
+.response-url img {
+    vertical-align: middle;
+    margin:2px;
+}
+
+
+
+/*highlighter for json*/
+.string {}
+.number {}
+.boolean {}
+.null {}
+.key {}
+
+/*highlighter for sql*/
+.sql-special-char {}
+.sql-keyword {font-weight: bold;}
+.sql-string {}
+.sql-comment {}
+.sql-function {}
+.sql-bind-param {}
+
+

@@ -1,0 +1,77 @@
+<html>
+<head>
+    <script src="lib/base64.js"></script>
+    <script src="lib/md5.js"></script>
+    <script src="lib/utf8.js"></script>
+    <script src="lib/SyntaxHighlighter.js"></script>
+    <script src="lib/HeaderParser.js"></script>
+    <script src="panel.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <!-- there are defined colors in this stylesheet. It can be changed dynamically
+     -->
+    <link id="globalStyle" rel="stylesheet" type="text/css" href="css/style-white.css"/>
+</head>
+<body>
+    <!-- toolbar pannel for filter, clear log btn, theme selector, etc. -->
+    <div id="toolbar" class="toolbar" >
+
+        <div name="space" class="space"></div>
+
+        <!-- Button to clear displayed messages -->
+        <img id="clearFilter" src="ico/clear.png" class="clear-button" title="Clear all logs">
+
+        <div name="space" class="space"></div>
+
+        <!-- filter messages by log level: debug, warning, etc. -->
+        <div class="filter-bar">
+            <img id="debugFilter" src="ico/debug.png" title="Filter DEBUG logs">
+            <img id="infoFilter" src="ico/info.png" title="Filter INFO logs">
+            <img id="warningFilter" src="ico/warning.png" title="Filter WARNING logs">
+            <img id="errorFilter" src="ico/error.png" title="Filter ERROR logs">
+            <img id="criticalFilter" src="ico/critical.png" title="Filter CRITICAL logs">
+        </div>
+
+        <div name="space" class="space"></div>
+
+        <!-- select color theme you like -->
+        <div class="theme-selector">
+            <label for="themeSelector">Color Scheme</label>
+            <select id="themeSelector" >
+              <option value="style-white.css" selected>White</option>
+              <option value="style-dark.css">Dark</option>
+            </select>
+        </div>
+
+        <!-- <div name="space" class="space" style="width:25px"></div> -->
+
+        <!-- <div class='text-filter'>
+            <label for="textFilter">Filter:</label>
+            <input type="text" name="textFilter" value="todo">
+        </div> -->
+
+        <div name="space" class="space"></div>
+
+        <!-- resize font to size you like -->
+        <div class='font-resizer'>
+           <img id="fontDown" src="ico/fontDown.png"  title="Decrease font size">
+           <img id="fontUp" src="ico/fontUp.png"  title="Increase font size">
+        </div>
+
+        <div name="space" class="space"></div>
+
+        <div id="loggerOnOffBtn" class="on-off-btn" data-value="1" >Turn OFF</div>
+
+    </div><!-- toolbar  -->
+
+    <!-- elemet to display some importatn msg to developer,
+         like firelogger is off" -->
+    <div id="globalMsg" class="global-msg" ></div>
+
+    <!-- main elemet for all messages-->
+    <div id="log" class="log"></div>
+
+    <!-- if I need some debug info, I print there here -->
+    <pre id="debug"></pre>
+
+</body>
+</html>

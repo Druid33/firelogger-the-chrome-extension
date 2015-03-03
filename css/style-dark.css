@@ -1,0 +1,61 @@
+@charset "utf-8";
+
+body{
+    background-color: #2C2C2C;
+}
+.log {
+		color: #DDDDDD;
+}
+.toolbar {
+    background-color: black;
+    color: white;
+}
+
+.response-msg {
+    border-bottom-color:gray;
+}
+
+.response-msg:hover{
+    background-color: #353535;
+}
+
+.response-url {
+    color: white;
+    background-color: gray;
+    border-bottom-color:gray;
+}
+
+.filter-bar img {
+    border-color:black;
+}
+.filter-bar img:hover {
+    border-color:blue;
+}
+
+.font-resizer img {
+    border-color:black;
+}
+.font-resizer img:hover {
+    border-color:blue;
+}
+
+.themeSelectorLabel {
+    color: gray;
+}
+
+/*highlighter for json*/
+.string { color: green; }
+.number { color: darkorange; }
+.boolean { color: blue; }
+.null { color: magenta; }
+.key { color: red; }
+
+/*highlighter for sql*/
+.sql-special-char {color: #e8b16f;}
+.sql-keyword {color: #71b4fc;}
+.sql-string {color: green;}
+.sql-comment {color: #777777;}
+.sql-function {color: red;}
+.sql-bind-param {color: #def450;}
+
+

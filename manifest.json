@@ -1,0 +1,23 @@
+{
+	"manifest_version": 2,
+	"name": "FireLogger The Chrome Extension",
+	"version": "1.0.2",
+	"icons": {
+		"32": "img/icon32.png",
+		"48": "img/icon48.png"
+	},
+	"minimum_chrome_version": "31.0",
+	"description": "Like FireLogger (FireBug extension) for Firefox.",
+	"devtools_page": "devtools.html",
+	"background": {
+		"page": "background.html"
+	},
+	"permissions": [
+		"webRequest",
+		"webRequestBlocking",
+		"tabs",
+		"http://*/*",
+		"https://*/*"
+	]
+}
+
