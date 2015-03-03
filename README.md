@@ -26,7 +26,7 @@ How to install
 
 From github:
 
-1. Clone the repository
+1. Clone the [repository](https://github.com/Druid33/firelogger-the-chrome-extension)
 2. Install an extension into Chrome (Tools -> Extensions -> Load unpacked extension... or chrome://extensions/)
 
 From chrome web store:
@@ -53,13 +53,14 @@ Thanks for inspiration to
 
 Screenshots
 ----------
-
+![Preview1](https://github.com/Druid33/firelogger-the-chrome-extension/blob/master/img/Preview1.png)
+![Preview2](https://github.com/Druid33/firelogger-the-chrome-extension/blob/master/img/Preview2.png)
 
 Issues
 ------
 
 Author
 ------
-Peter Skultety
-petko.skultety@gmail.com
+Peter Skultety,
+petko.skultety@gmail.com,
 https://github.com/Druid33
