@@ -1,9 +1,9 @@
-
 FireLogger The Chrome Extension
 ===============================
 
 extension similar to [FireLogger](http://firelogger.binaryage.com/) in Firefox. Display firelogger messages from server in separate panel/tab in chrome developer tools.
 For quick test install extension, turn on developer tools and visit http://firelogger-php-tests.binaryage.com/basic.php
+
 
 Features
 ---------
@@ -14,6 +14,7 @@ Features
 - font resizer
 - Turn on/off button (if headers are too big(typically due lot of firelogger headers) request can failed in chrome)
 
+
 TODO
 -----
 - filter by message content
@@ -21,8 +22,15 @@ TODO
 - display row number of message
 - automaticaly clear logger after page reload and create Persist button
 
+
 How to install
 --------------
+
+Quick instalation:
+
+1. In list of files on top find file with name firelogger-the-chrome-extension.crx
+2. Download it (Right-click on the file and choose "Save link as" or something similar)
+3. open it with Chrome (right-click on file and choose "Open with...")
 
 From github:
 
@@ -54,9 +62,11 @@ Screenshots
 ![Preview1](https://github.com/Druid33/firelogger-the-chrome-extension/blob/master/img/Preview1.png)
 ![Preview2](https://github.com/Druid33/firelogger-the-chrome-extension/blob/master/img/Preview2.png)
 
+
 Issues
 ------
 If you find some bug, please report it [here](https://github.com/Druid33/firelogger-the-chrome-extension/issues).
+
 
 Author
 ------
