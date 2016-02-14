@@ -13,14 +13,16 @@ Features
 - color theme selector
 - font resizer
 - Turn on/off button (if headers are too big(typically due lot of firelogger headers) request can failed in chrome)
+- filter by message content
+- Persist button (automaticaly clear logger after page reload)
 
 
 TODO
 -----
-- filter by message content
+
 - display date and time of message
 - display row number of message
-- automaticaly clear logger after page reload and create Persist button
+
 
 
 How to install

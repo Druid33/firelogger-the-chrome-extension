@@ -28,11 +28,16 @@
     vertical-align: top;
 }
 
+.toolbar-input {
+    display: inline-block;
+    vertical-align: top;
+    margin-top:6px;
+}
 
 .theme-selector {
     display: inline-block;
     vertical-align: top;
-    margin-top:3px;
+    margin-top:6px;
 }
 .theme-selector label {
     font-size: 13px;
@@ -135,6 +140,16 @@
     white-space:pre-wrap;
     /*font-family: monospace;*/
 
+}
+
+.debug-log {
+    position: fixed;
+    top: 30;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    color: darkgreen;
+    max-width: 300px;
 }
 
 

@@ -9,9 +9,14 @@
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <!-- there are defined colors in this stylesheet. It can be changed dynamically
      -->
-    <link id="globalStyle" rel="stylesheet" type="text/css" href="css/style-white.css"/>
+    <link id="globalStyle" rel="stylesheet" type="text/css" href="css/style-dark.css"/>
 </head>
 <body>
+
+    <!-- if I need some debug info, I print there here -->
+    <pre id="debugLog" class="debug-log"></pre>
+
+
     <!-- toolbar pannel for filter, clear log btn, theme selector, etc. -->
     <div id="toolbar" class="toolbar" >
 
@@ -19,6 +24,13 @@
 
         <!-- Button to clear displayed messages -->
         <img id="clearFilter" src="ico/clear.png" class="clear-button" title="Clear all logs">
+
+        <div name="space" class="space"></div>
+
+        <div class="toolbar-input">
+            <label for="persist">Persist</label>
+            <input type="checkbox" name="persist" id="persistCheckBox" value="persist" checked>
+        </div>
 
         <div name="space" class="space"></div>
 
@@ -37,17 +49,12 @@
         <div class="theme-selector">
             <label for="themeSelector">Color Scheme</label>
             <select id="themeSelector" >
-              <option value="style-white.css" selected>White</option>
-              <option value="style-dark.css">Dark</option>
+              <option value="style-white.css" >White</option>
+              <option value="style-dark.css" selected>Dark</option>
             </select>
         </div>
 
         <!-- <div name="space" class="space" style="width:25px"></div> -->
-
-        <!-- <div class='text-filter'>
-            <label for="textFilter">Filter:</label>
-            <input type="text" name="textFilter" value="todo">
-        </div> -->
 
         <div name="space" class="space"></div>
 
@@ -55,6 +62,20 @@
         <div class='font-resizer'>
            <img id="fontDown" src="ico/fontDown.png"  title="Decrease font size">
            <img id="fontUp" src="ico/fontUp.png"  title="Increase font size">
+        </div>
+
+        <div name="space" class="space"></div>
+
+        <div class="toolbar-input">
+            <label for="collapseOldCheckBox">Collapse old</label>
+            <input type="checkbox" name="collapseOldCheckBox" id="collapseOldCheckBox" value="collpase" checked>
+        </div>
+
+        <div name="space" class="space"></div>
+
+        <div class='toolbar-input'>
+            <label for="textFilter">Content filter:</label>
+            <input type="search" incremental name="textFilter" id="textFilter">
         </div>
 
         <div name="space" class="space"></div>
@@ -70,8 +91,7 @@
     <!-- main elemet for all messages-->
     <div id="log" class="log"></div>
 
-    <!-- if I need some debug info, I print there here -->
-    <pre id="debug"></pre>
+
 
 </body>
 </html>

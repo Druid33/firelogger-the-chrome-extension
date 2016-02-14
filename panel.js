@@ -7,7 +7,10 @@ var filter = {
 	},
 	filterButtons = {},
 	logElement,
-	globalMsgElement
+	globalMsgElement,
+	persistLog = true,
+	collapseOldLog = true,
+	contextFilter = false
 ;
 
 window.onload = function(){
@@ -41,6 +44,31 @@ window.onload = function(){
 			link.setAttribute('href','css/'+style);
 		}
 	};
+
+	//set logs to persistant between requests
+	document.getElementById("persistCheckBox").onchange = function() {
+		persistLog = !persistLog;
+	};
+
+	//set log to collapse, before add new one
+	document.getElementById("collapseOldCheckBox").onchange = function() {
+		collapseOldLog = !collapseOldLog;
+	};
+
+
+	//set contextFilter variable after text filter value change
+	//and call applyFitlers() metod, to apply all filters
+	document.getElementById("textFilter").onsearch = function() {
+		if (this.value === '') {
+			contextFilter = false;
+		} else {
+			contextFilter = this.value;
+		}
+
+		applyFilter();
+	};
+
+
 
 	// default font definition
 	logElement.style.fontSize = 14;
@@ -189,8 +217,19 @@ function processResponseHeaders(request){
 		regExp = new RegExp("text\/html|application\/json"),
 		i;
 
+	// if persist checkbox is not checked, log must be cleared
+	if (!persistLog) {
+		clearLog();
+	}
+
 	// we procces only some type of responses
 	if (regExp.test(mimeType)) {
+
+		// compress old response, if checkbox is checked
+		if (collapseOldLog && logElement.lastElementChild) {
+			collapseResponse(logElement.lastElementChild);
+		}
+
 		// parse firelogger messages from headers and "convert" them to objects
 		logs = HeaderParser.getLogsFromHeaders(resposeHeaders);
 
@@ -254,6 +293,7 @@ function createResponseMsgElement(logLevel, htmlText, syle) {
 
 	responseMsg.className = "response-msg " + logLevel;
 	responseMsg.setAttribute('data-loglevel', logLevel);
+
 	responseMsg.innerHTML = htmlText;
 
 	// TODO
@@ -265,11 +305,14 @@ function createResponseMsgElement(logLevel, htmlText, syle) {
 	// }
 
 	// dispay or hide element according to active filters
-	if (filter[logLevel] === true) {
-		responseMsg.style.display = 'block';
-	} else {
-		responseMsg.style.display = 'none';
-	}
+	applyFiltersToMsg(responseMsg);
+
+
+	// if (filter[logLevel] === true) {
+	// 	responseMsg.style.display = 'block';
+	// } else {
+	// 	responseMsg.style.display = 'none';
+	// }
 
 	return responseMsg;
 }
@@ -306,14 +349,16 @@ function createResponseDiv(url){
 			responseMsgsDiv = responseDiv.lastElementChild
 			;
 		if (responseDiv.getAttribute('data-expanded') === "1" ) {
-			responseDiv.setAttribute('data-expanded',"0");
-			responseMsgsDiv.style.display = 'none';
-			expandCollapsedImg.src="ico/colapse.png";
+			collapseResponse(responseDiv);
+			// responseDiv.setAttribute('data-expanded',"0");
+			// responseMsgsDiv.style.display = 'none';
+			// expandCollapsedImg.src="ico/colapse.png";
 
 		} else {
-			responseDiv.setAttribute('data-expanded',"1");
-			responseMsgsDiv.style.display = 'block';
-			expandCollapsedImg.src="ico/expand.png";
+			expandResponse(responseDiv);
+			// responseDiv.setAttribute('data-expanded',"1");
+			// responseMsgsDiv.style.display = 'block';
+			// expandCollapsedImg.src="ico/expand.png";
 		}
 
 	};
@@ -328,6 +373,48 @@ function createResponseDiv(url){
 
 	return responseDiv;
 }
+
+/**
+ * expandResponse
+ *
+ * Show messages from server response
+ *
+ * @access public
+ * @author Peter Skultety <petko.skultety@gmail.com>
+ * @param  div element responseDiv Html element, which messages will be shown
+ * @return {[type]}             [description]
+ */
+function expandResponse(responseDiv) {
+	var expandCollapsedImg = responseDiv.childNodes[0].childNodes[0],
+		responseMsgsDiv = responseDiv.childNodes[1]
+	;
+
+	responseDiv.setAttribute('data-expanded',"1");
+	responseMsgsDiv.style.display = 'block';
+	expandCollapsedImg.src="ico/expand.png";
+}
+
+
+/**
+ * collapseResponse
+ *
+ * Hide messages from server response
+ *
+ * @access public
+ * @author Peter Skultety <petko.skultety@gmail.com>
+ * @param  div element responseDiv Html element, which messages will be hiden
+ * @return {[type]}             [description]
+ */
+function collapseResponse(responseDiv) {
+	var expandCollapsedImg = responseDiv.childNodes[0].childNodes[0],
+		responseMsgsDiv = responseDiv.childNodes[1]
+	;
+
+	responseDiv.setAttribute('data-expanded',"0");
+	responseMsgsDiv.style.display = 'none';
+	expandCollapsedImg.src="ico/colapse.png";
+}
+
 
 /**
  * clearLog
@@ -384,8 +471,7 @@ function applyFilter(){
 	var responses = logElement.childNodes,
 		responseMsgs,
 		responseMsg,
-		i,j,
-		logLevel
+		i,j
 		;
 
 	// proccess all responses
@@ -397,14 +483,69 @@ function applyFilter(){
 		// process all reposnseMsg
 		for (j =0 ; j < responseMsgs.length; j++) {
 			responseMsg = responseMsgs[j];
-			logLevel = responseMsg.getAttribute('data-loglevel');
-			// display or hide element according to relevant filter status
-			if (filter[logLevel] === true) {
-				responseMsg.style.display = 'block';
-			} else {
-				responseMsg.style.display = 'none';
-			}
+			applyFiltersToMsg(responseMsg);
+
+
 		}
 	}
 }
 
+
+/**
+ * applyFiltersToMsg
+ *
+ * display or hide msg according to filters
+ *
+ * @access [public]
+ * @author Peter Skultety <petko.skultety@gmail.com>
+ * @param  div element responseMsg msg element
+ * @return {[type]}             [description]
+ */
+function applyFiltersToMsg(responseMsg) {
+	var logLevel,
+		msgRawText,
+		htmlText
+	;
+
+	logLevel = responseMsg.getAttribute('data-loglevel');
+	// msgRawText = responseMsg.getAttribute('data-rawtext');
+	htmlText = responseMsg.innerHTML;
+
+	// display or hide element according to relevant filter status
+	if (filter[logLevel] === true) {
+
+		// apply context filter if its filled
+		if (contextFilter !== false) {
+			if ((htmlText.toLowerCase().indexOf(contextFilter.toLowerCase()) === -1)) {
+				responseMsg.style.display = 'none';
+			} else {
+				responseMsg.style.display = 'block';
+			}
+		} else {
+			responseMsg.style.display = 'block';
+		}
+
+	} else {
+		responseMsg.style.display = 'none';
+	}
+}
+
+
+/**
+ * printDebugMsg
+ *
+ * print message to my debug log.
+ * It is not possible access chrome console from developer tools panel.
+ * (or... id dont know how to do it :) )
+ *
+ * @access public
+ * @author Peter Skultety <petko.skultety@gmail.com>
+ * @param  string text text to display
+ * @return {[type]}      [description]
+ */
+function printDebugMsg(text){
+	var msg = document.createElement("p")
+	;
+	msg.innerHTML = text;
+	document.getElementById("debugLog").appendChild(msg);
+}
