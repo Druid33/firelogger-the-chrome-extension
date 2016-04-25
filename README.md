@@ -41,7 +41,7 @@ From github:
 
 From chrome web store:
 
-In progress...
+https://chrome.google.com/webstore/detail/firelogger-the-chrome-ext/bfenihpelgfccnilfcejojomikgimnej
 
 
 How to use
